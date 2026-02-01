@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SURPRISE #1</title>
+    <link rel="stylesheet" href="playlist.css">
+    <link rel="icon" type="image/png" href="heart_00000.png">
+</head>
+<body>
+    <div class="video-background">
+        <video autoplay muted loop playsinline id="bg-video">
+            <source src="BG (1).mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <audio id="playlist-audio" loop>
+        <source src="HOURS.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="sequence-wrapper">
+        <div class="intro-messages">
+            <h2 class="msg m1">READY FOR THE FIRST SURPRISE?</h2>
+            <h2 class="msg m2">WELL, FIRST SURPRISE IS..</h2>
+            <h2 class="msg m3">I HAVE MADE A SPOTIFY PLAYLIST JUST FOR YOU</h2>
+        </div>
+
+<div class="qr-stage">
+    <h1 class="final-header">SCAN HERE</h1>
+    <div class="qr-box">
+        <img src="qr code_00000.png" class="qr-code" alt="Spotify QR">
+        <div class="qr-footer">
+            <div class="spotify-brand">SPOTIFY</div>
+            <div class="footer-tag">"MADE BY INFIX"</div>
+        </div>
+    </div>
+    <a href="about.html" class="back-link">GO BACK FOR MORE SURPRISES</a>
+</div>
+<script>
+    const audio = document.getElementById('playlist-audio');
+    let musicStarted = false;
+
+    // Function to start the audio and fade it in
+    function startPlaylistMusic() {
+        if (!musicStarted) {
+            musicStarted = true;
+            audio.volume = 0;
+            
+            audio.play().then(() => {
+                let vol = 0;
+                const fadeIn = setInterval(() => {
+                    if (vol < 1) {
+                        vol += 0.05;
+                        audio.volume = Math.min(vol, 1);
+                    } else { 
+                        clearInterval(fadeIn); 
+                    }
+                }, 200);
+            }).catch(err => {
+                // If it still fails, we reset so the next click tries again
+                musicStarted = false;
+                console.log("Waiting for interaction...");
+            });
+        }
+    }
+
+    // This triggers as soon as she moves her mouse, clicks, or touches her screen
+    window.addEventListener('mousemove', startPlaylistMusic, { once: true });
+    window.addEventListener('click', startPlaylistMusic, { once: true });
+    window.addEventListener('touchstart', startPlaylistMusic, { once: true });
+    window.addEventListener('scroll', startPlaylistMusic, { once: true });
+</script>
+</body>
+</html>

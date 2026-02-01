@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SURPRISE #4</title>
+  <link rel="stylesheet" href="draft.css" />
+  <link rel="icon" type="image/png" href="heart_00000.png">
+  
+
+</head>
+<body>
+      <audio id="playlist-audio" loop>
+        <source src="SHOWMEHOW.mp3" type="audio/mpeg">
+    </audio>
+
+  <section class="hero">
+    <video autoplay muted loop playsinline class="bg-video">
+      <source src="OPEN ARMS 🫂.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-content">
+      <h1>DRAFTS I DIDN’T <span class="send">SEND YOU</span></h1>
+    </div>
+  </section>
+
+  <section class="second-section">
+      <div class="image-center-wrapper">
+          <img src="draft_00000.png" alt="Center Piece" class="center-img">
+      </div>
+  </section>
+
+<section class="third-section">
+    <div class="folder-wrapper">
+        <input type="radio" name="folder-tabs" id="tab1" checked>
+        <input type="radio" name="folder-tabs" id="tab2">
+
+        <div class="folder-tabs">
+            <label for="tab1" class="tab-label">INTRO</label>
+            <label for="tab2" class="tab-label">THE DRAFTS</label>
+        </div>
+
+        <div class="folder-body">
+            <div class="page content-intro">
+                <h2 class="page-title">THE BEGINNING</h2>
+                <p>CLICK THE DRAFTS FOLDER TAB TO READ</p>
+                <span class="folder-decoration">★ ★ ★</span>
+            </div>
+
+            <div class="page content-drafts">
+                <h2 class="page-title">UNSENT MESSAGES</h2>
+                <div class="draft-list">
+                    <p class="draft-item">I lowk hate when you call me bro bro bro</p>
+                    <p class="draft-item">I wanted to ask you something because someone told me you might be talking to a guy from SG, and it kinda stuck in my head</p>
+                    <p class="draft-item">I really like calling you. Even when I want to call so bad, I don’t ask sometimes because I know you’re busy.</p>
+                    <p class="draft-item">Please don’t get mad if I didn’t text you. It wasn’t ego or anything like that—I was just busy, and I felt bad thinking I might annoy you.</p>
+                    <p class="draft-item">And just to be clear, this isn’t me confessing or trying to rush into anything. It’s still too early. I really do like you, but sometimes I feel like I don’t deserve you—you’re way better than me, and there are probably other guys who are way better too. So yeah.</p>
+                    <p class="draft-item"></p>
+                </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+    <div class="footer-nav">
+        <a href="about.html" class="return-link">DONE READING? ← GO BACK TO THE ADVENTURE</a>
+    </div>
+</body>
+<script>
+    const audio = document.getElementById('playlist-audio');
+    let musicStarted = false;
+
+    // Function to start the audio and fade it in
+    function startPlaylistMusic() {
+        if (!musicStarted) {
+            musicStarted = true;
+            audio.volume = 0;
+            
+            audio.play().then(() => {
+                let vol = 0;
+                const fadeIn = setInterval(() => {
+                    if (vol < 1) {
+                        vol += 0.05;
+                        audio.volume = Math.min(vol, 1);
+                    } else { 
+                        clearInterval(fadeIn); 
+                    }
+                }, 200);
+            }).catch(err => {
+                // If it still fails, we reset so the next click tries again
+                musicStarted = false;
+                console.log("Waiting for interaction...");
+            });
+        }
+    }
+
+    // This triggers as soon as she moves her mouse, clicks, or touches her screen
+    window.addEventListener('mousemove', startPlaylistMusic, { once: true });
+    window.addEventListener('click', startPlaylistMusic, { once: true });
+    window.addEventListener('touchstart', startPlaylistMusic, { once: true });
+    window.addEventListener('scroll', startPlaylistMusic, { once: true });
+</script>
+</html>

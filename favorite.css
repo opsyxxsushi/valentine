@@ -1,0 +1,290 @@
+@font-face {
+    font-family: 'Helve-Reg';
+    src: url('HELVETICA\ LIGHT\ REGULAR.OTF'); /* Use a font like Bodoni or similar to the reference */
+}
+@font-face {
+    font-family: 'BRAVEN';
+    src: url('BRAVENREGULAR.TTF'); /* Use a font like Bodoni or similar to the reference */
+}
+@font-face {
+    font-family: 'sig';
+    src: url('THESIGNATURE.TTF'); /* Use a font like Bodoni or similar to the reference */
+}
+@font-face {
+    font-family: 'BRI';
+    src: url('BRICOLAGEGROTESQUE10PT-REGULAR-BF648BD57857EB7.OTF'); /* Use a font like Bodoni or similar to the reference */
+}
+/* 1. The width of the entire scrollbar */
+::-webkit-scrollbar {
+    width: 0px;               /* Thin and minimalist */
+    background: #000;  /* Makes the track background transparent */
+}
+
+/* 2. The draggable part (the thumb) */
+::-webkit-scrollbar-thumb {
+    background: #000;      /* Dark grey thumb */
+    border-radius: 10px;      /* Rounded edges */
+    border: 2px solid transparent; /* Creates a "gap" look if track isn't transparent */
+}
+
+/* 3. Hover effect on the thumb */
+::-webkit-scrollbar-thumb:hover {
+    background: #fff;      /* Lights up slightly when hovered */
+}
+
+/* 4. The track (the area behind the thumb) */
+::-webkit-scrollbar-track {
+    background: transparent;  /* Ensures the background stays clear */
+}
+html, body {
+        -webkit-user-select: none; /* Safari */
+    -ms-user-select: none;     /* IE 10 and IE 11 */
+    user-select: none;  
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FFF; /* Matches the light grey background */
+    color: #000;
+    font-family: 'Helve-Reg';
+    text-align: center;
+    animation: fadeInPage 2s ease-in-out;
+}
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.background-flower {
+    position: absolute;
+    width: 1480px; /* Adjust size based on your preference */
+    opacity: 1;
+    z-index: 1; /* Places it behind the text */
+    
+    /* This filter turns a black image into a deep red color 
+       matching the "Contacts" page background.
+    /* Optional: Center it perfectly */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: fadeIn 2s ease-in forwards;
+    animation-delay: 0.1s;
+}
+.header {
+display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative; /* The cream/off-white color from your image */
+    overflow: hidden;              /* Removes default browser spacing */
+}
+/* 1. Define the entrance animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px); /* Starts 30px lower */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);    /* Ends at natural position */
+    }
+}
+
+.header h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden; /* Keeps the text from 'bleeding' while rising */
+}
+
+/* 2. Apply base styles to the fading elements */
+.fade-up {
+    display: inline-block;
+    opacity: 0; /* Hidden initially */
+    animation: fadeInUp 1s ease-out forwards; /* 'forwards' keeps it visible at the end */
+}
+
+/* 3. Timing: Line 1 appears first */
+.line-1 {
+    animation-delay: 0.3s;
+    font-family: 'BRI';
+    color: #000;
+    font-weight: 200;/* Or 'BRAVEN' per your style */
+    font-size: 120px;
+}
+
+/* 4. Timing: 'THINGS' appears second */
+.things {
+    animation-delay: 0.8s; /* 0.5s after the first line */
+    font-family: 'BRI';
+    font-size: 80px;
+    font-weight: 200;
+    color: #000;
+    margin-top: -50px; /* Overlap effect from your design */
+}
+@keyframes fadeIn {
+    to { opacity: 1; } /* Adjust to your preferred flower transparency */
+}
+@media (max-width: 850px){
+    .background-flower {
+        position: absolute;
+        width: 1920px;
+        height: 100%;
+    }
+}
+.content-wrapper {
+width: 100%;
+    padding: 0; /* Remove padding here so backgrounds touch the sides */
+    max-width: none;
+}
+
+.folder-row {
+display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 200px 10%; /* Move padding here */
+    margin-bottom: 0; /* Backgrounds should touch, so we use padding for gaps instead */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Swaps order for 2 and 4 */
+.row-right {
+    flex-direction: row-reverse;
+}
+
+/* The Group: Folder + Example Text below it */
+.media-group {
+    flex: 0 0 400px; /* Fixed width for the folder area */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* Section 1 Background (e.g., Soft Cream) */
+.folder-row:nth-of-type(1) {
+    background-color: #fcfaf2;
+}
+
+/* Section 2 Background (e.g., Very Light Grey) */
+.folder-row:nth-of-type(2) {
+    background-color: #a1d2fb;
+}
+
+/* Section 3 Background (e.g., Muted Rose/Pink Hint) */
+.folder-row:nth-of-type(3) {
+    background-color: #f1F1F1;
+}
+
+/* Section 4 Background (e.g., Sage/Green Hint) */
+.folder-row:nth-of-type(4) {
+    background-color: #242424;
+}
+
+/* Section 5 Background (e.g., Light Sand/Beige) */
+.folder-row:nth-of-type(5) {
+    background-color: #fff;
+}
+/* --- SECTION 1 --- */
+.folder-row:nth-of-type(1) .example-title {
+    color: #8e2e26; /* Deep Red */
+}
+.folder-row:nth-of-type(1) .description-box p {
+    color: #8e2e26; /* Dark Charcoal */
+}
+
+/* --- SECTION 2 --- */
+.folder-row:nth-of-type(2) .example-title {
+    color: #1e1e1e; /* Navy Blue */
+}
+.folder-row:nth-of-type(2) .description-box p {
+    color: #1e1e1e;  /* Deep Black */
+}
+
+/* --- SECTION 3 --- */
+.folder-row:nth-of-type(3) .example-title {
+    color: #660033; /* Vibrant Pink */
+}
+.folder-row:nth-of-type(3) .description-box p {
+    color: #660033; /* Dark Wine */
+}
+
+/* --- SECTION 4 --- */
+.folder-row:nth-of-type(4) .example-title {
+    color: #FFF; /* Forest Green */
+}
+.folder-row:nth-of-type(4) .description-box p {
+    color: #FFF /* Dark Moss */
+}
+
+/* --- SECTION 5 --- */
+.folder-row:nth-of-type(5) .example-title {
+    color: #8e5a2e; /* Bronze/Brown */
+}
+.folder-row:nth-of-type(5) .description-box p {
+    color: #452a14; /* Deep Earth */
+}
+.folder-img {
+    width: 225px;
+    height: auto;
+    margin-bottom: -25px; /* Gap between image and EXAMPLE text */
+}
+
+.example-title {
+    font-family: 'BRI';
+    font-size: 32px;
+    font-weight: 200;
+    font-style: italic;
+    letter-spacing: -1.5px;
+    margin: 0;
+}
+/* The Paragraph Box */
+.description-box {
+    flex: 1;
+    max-width: 500px;
+    padding: 0 40px;
+}
+
+.description-box p {
+    font-family: 'Helve-Reg';
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1.5;
+    text-align: left;
+    margin: 0;
+}
+/* Fix for mobile */
+@media (max-width: 850px) {
+    .folder-row, .row-right {
+        flex-direction: column;
+        margin-bottom: 150px;
+        gap: 40px;
+    }
+    .description-box {
+        text-align: center;
+    }
+    .description-box p {
+        text-align: center;
+    }
+}
+.footer-nav {
+    width: 100%;
+    padding: 100px 0; /* Creates space after the last folder */
+    display: flex;
+    justify-content: center;
+    background-color: #ffff; /* Matches the background of Section 5 for a seamless look */
+}
+
+.return-link {
+    font-family: 'BRI';
+    font-size: 14px;
+    text-decoration: none;
+    color: #000;
+    padding-bottom: 5px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.return-link:hover {
+    color: #ff3399; /* Turns pink on hover like your other links */
+    opacity: 0.7;
+}

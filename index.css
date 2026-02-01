@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 1. The width of the entire scrollbar */
+::-webkit-scrollbar {
+    width: 8px;               /* Thin and minimalist */
+    background: #000;  /* Makes the track background transparent */
+}
+
+/* 2. The draggable part (the thumb) */
+::-webkit-scrollbar-thumb {
+    background: #000;      /* Dark grey thumb */
+    border-radius: 10px;      /* Rounded edges */
+    border: 2px solid transparent; /* Creates a "gap" look if track isn't transparent */
+}
+
+/* 3. Hover effect on the thumb */
+::-webkit-scrollbar-thumb:hover {
+    background: #fff;      /* Lights up slightly when hovered */
+}
+
+/* 4. The track (the area behind the thumb) */
+::-webkit-scrollbar-track {
+    background: transparent;  /* Ensures the background stays clear */
+}
+/* Your Font Faces */
+@font-face {
+    font-family: 'Helve-Reg';
+    src: url('HELVETICA LIGHT REGULAR.OTF');
+}
+@font-face {
+    font-family: 'Helve';
+    src: url('HELVETICA-BOLD.TTF');
+}
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+     font-family: 'Helve-Reg';
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+    overflow: hidden; /* Prevents scrollbars when button jumps */
+    animation: fadeInPage 2s ease-in-out;
+}
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+}
+
+.gif-wrapper {
+    width: 250px;
+    margin: 0 auto 20px auto;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+button {
+    padding: 12px 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 140px;
+    transition: transform 0.1s;
+}
+
+#yesBtn {
+    background-color: #2ecc71; /* Green */
+    color: white;
+}
+
+#noBtn {
+    background-color: #e74c3c; /* Red */
+    color: white;
+}
+
+button:active {
+    transform: scale(0.95);
+}

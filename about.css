@@ -1,0 +1,490 @@
+/* --- YOUR ORIGINAL CODE UNTOUCHED --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Original Scrollbar Settings */
+::-webkit-scrollbar { width: 0px; background: transparent; }
+::-webkit-scrollbar-thumb { background: transparent; border-radius: 10px; border: 2px solid transparent; }
+::-webkit-scrollbar-thumb:hover { background: transparent; }
+::-webkit-scrollbar-track { background: transparent; }
+@font-face { font-family: 'Helve-Reg'; src: url('HELVETICA LIGHT REGULAR.OTF'); }
+@font-face { font-family: 'Helve'; src: url('HELVETICA-BOLD.TTF'); }
+@font-face { font-family: 'PESTE'; src: url('PESTETRIAL-REGULAR.OTF'); }
+
+body {
+    background-color: #F1F1F1;
+    font-family: 'Inter', sans-serif;
+    color: #242223;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none;     /* IE 10 and IE 11 */
+    user-select: none; 
+    animation: fadeInPage 2s ease-in-out;
+}
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.masterpiece-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-title {
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 180px;
+    text-align: center;
+    font-family: 'Helve-Reg';
+}
+
+.card-track {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.square-card {
+    position: absolute;
+    width: 200px;
+    aspect-ratio: 1 / 1; 
+    background: transparent;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.square-card img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
+
+/* PC POSITIONS */
+.s1 { transform: translateX(-540px) rotate(-10deg); z-index: 1; }
+.s2 { transform: translateX(-380px) translateY(-64px) rotate(-8deg); z-index: 2; }
+.s3 { transform: translateX(-220px) translateY(-40px) rotate(-6deg); z-index: 3; }
+.s4 { transform: translateX(-64px) translateY(-44px) rotate(-2.8deg); z-index: 4; }
+.s5 { transform: translateX(100px) translateY(-38px) rotate(4deg); z-index: 5; }
+.s6 { transform: translateX(248px) translateY(-18px) rotate(8deg); z-index: 6; }
+.s7 { transform: translateX(400px) translateY(-42px) rotate(10deg); z-index: 7; }
+
+/* DIVIDER */
+.divider-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px 0;
+    width: 100%;
+    font-family: 'PESTE';
+    font-size: 1.25rem;
+    letter-spacing: 2px;
+    color: #242223;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    background-color: #fff;
+}
+
+.arrow { font-size: 1.2rem; font-weight: 300; opacity: 0.6; }
+.oval-text { border: 1px solid #242223; padding: 2px 15px; border-radius: 50px; font-style: italic; }
+
+/* PRODUCT SECTION FIX - CENTERED BUTTONS */
+.product-section {
+    padding: 80px 20px;
+    background-color: #FDFBF4; 
+    display: flex;
+    justify-content: center;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 1100px;
+    width: 100%;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers everything horizontally inside the card */
+    text-align: center;
+}
+
+.img-container {
+    width: 100%;
+    aspect-ratio: 1 / 1.3; 
+    background: white;
+    padding: 1px;
+    border-radius: 5px;
+    border: 1px solid #E0E0E0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    margin-bottom: 15px;
+}
+
+.img-container img { width: 100%; height: 100%; object-fit: cover; }
+
+/* BUTTON FIX */
+.btn-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;          /* Added to help centering */
+    justify-content: center; /* Centers the pill inside the link */
+    width: 100%;
+    max-width: 160px;
+    margin: 0 auto;         /* Forces the link to center if it expands */
+}
+
+.price-pill, .quantity-pill {
+    width: 160px;
+    border: 1px solid #242223;
+    border-radius: 50px;
+    padding: 6px 0;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quantity-pill {
+    background: #242223;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* HOVER COLORS */
+.btn-link:hover .quantity-pill {
+    background-color: #5F0101; /* Requested Background */
+    color: #F4F1EC;           /* Requested Text Color */
+    border-color: #5F0101;
+}
+
+.btn-link:active .quantity-pill { transform: translateY(0); }
+
+/* MOBILE FIXES */
+@media (max-width: 850px) {
+    .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    .price-pill, .btn-link { width: 100%; max-width: 100%; }
+}
+.img-container {
+    position: relative;
+    overflow: hidden;
+}
+
+/* The DONE text overlay - hidden by default */
+.done-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-family: 'Helve-Reg';
+    font-weight: bold;
+    font-size: 1.5rem;
+    z-index: 5;
+    display: none; /* Hidden until opened */
+    pointer-events: none;
+    text-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+}
+
+/* THE OPENED STATE */
+.mystery-card.is-opened .img-container img {
+    filter: blur(1.5px) brightness(1);
+}
+
+.mystery-card.is-opened .done-overlay {
+    display: block; /* Shows the text */
+}
+
+.mystery-card.is-opened .quantity-pill span {
+    content: "READ"; /* Optional: Change button text */
+}
+/* --- SPINNER SECTION --- */
+.valentine-spinner-section {
+    width: 100%;
+    height: 850px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-top: 1px solid #eee;
+}
+
+.spinner-title {
+    font-family: 'Helve-Reg';
+    font-weight: 800;
+    font-size: 3rem;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+/* The "Window" the user sees */
+.crate-viewport {
+    position: relative;
+    width: 800px;
+    height: 250px;
+    background: transparent;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+/* The pointer/marker in the middle */
+.crate-marker {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #ff3399;
+    z-index: 10;
+    transform: translateX(-50%);
+}
+
+/* The long row of images */
+.crate-reel {
+    display: flex;
+    position: absolute;
+    left: 0;
+    transition: transform 5s cubic-bezier(0.15, 0, 0.05, 1); /* CSGO feel */
+    will-change: transform;
+}
+
+.gift-item {
+    width: 160px; /* 5 items visible in 800px viewport */
+    height: 160px;
+    padding: 10px;
+    flex-shrink: 0;
+}
+
+.gift-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.spinner-controls {
+    margin-top: 40px;
+    text-align: center;
+}
+
+#spinBtn {
+    padding: 15px 40px;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    background: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+#spinBtn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.tries-text {
+    margin-top: 15px;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+}
+
+/* EXAMPLE SECTION */
+.example-footer-section {
+    width: 100%;
+    height: 400px;
+    background: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+}
+.feedback-section {
+    width: 100%;
+    background-color: #fff;
+    padding: 100px 20px;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #eee;
+}
+
+.feedback-container {
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+}
+
+.feedback-container h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#messageInput {
+    width: 100%;
+    height: 150px;
+    padding: 20px;
+    border: 2px solid #000;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    resize: none;
+    transition: 0.3s;
+}
+
+#messageInput:focus {
+    border-color: #ff3399;
+}
+
+#sendBtn {
+    margin-top: 20px;
+    padding: 15px 60px;
+    background: #000;
+    color: #fff;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#sendBtn:hover {
+    background: #ff3399;
+}
+
+#formStatus {
+    margin-top: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    color: #2ecc71; /* Green for success */
+}
+.final-question-section {
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+}
+
+.real-talk-h1 {
+    font-family: 'Helve-Reg';
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 300;
+    margin-bottom: 50px;
+    letter-spacing: -2px;
+}
+
+.choice-buttons {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.choice-btn {
+    padding: 20px 40px;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: 3px solid #000;
+    background: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.yes-btn:hover {
+    background: #ff3399;
+    color: #fff;
+    border-color: #ff3399;
+}
+
+.talk-btn:hover {
+    background: #000;
+    color: #fff;
+}
+
+.final-message h1 {
+    font-family: 'Helve-Reg';
+    font-size: clamp(2rem, 5vw, 5rem);
+    font-weight: 200;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+/* Initially hide the progression sections */
+.valentine-spinner-section,
+.feedback-section,
+.final-question-section {
+    display: none; 
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+/* Class to trigger showing them */
+.section-visible {
+    display: flex !important; /* Overrides the 'none' */
+    opacity: 1 !important;
+}
+.result-vertical-stack {
+    display: flex;
+    flex-direction: column; /* Stacks items vertically */
+    align-items: center;    /* Centers them horizontally */
+    justify-content: center;
+    text-align: center;
+}
+
+.next-step-container {
+    margin-top: 20px;       /* Gap between the big text and the link */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1.2s ease-out;
+}
+
+/* The animation trigger */
+.next-step-container.reveal {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.next-link {
+    font-family: 'Helve-Reg'; 
+    color: #000;
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: -1px;
+    opacity: 0.8;
+}
+
+.next-link:hover {
+    opacity: 1;
+    text-decoration: underline;
+}

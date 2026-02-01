@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE END</title>
+    <link rel="stylesheet" href="gend.css">
+    <link rel="icon" type="image/png" href="heart_00000.png">
+</head>
+<body>
+
+    <div id="overlay">
+        <p>Click to Begin</p>
+    </div>
+
+    <div id="credit-container">
+        <span id="text-display"></span><span class="cursor">_</span>
+    </div>
+
+<audio id="bg-music" preload="auto">
+    <source src="RUSHV2.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+    const credits = [
+        "THANKS FOR BEING HERE",
+        "I HOPE SOME THINGS ARE BETTER LEFT UNSENT",
+        "I JUST DIDN'T WANT TO RUIN ANYTHING OF US",
+        "THIS PAGE ENDS HERE",
+        "37+ HOURS TOTAL TIME",
+        "SPECIAL SHOUT OUT TO PINTEREST FOR DESIGN INSPIRATIONS",
+        "MGKYRSI"
+    ];
+
+    const youtubeLink = "https://youtu.be/fHR1CZ9x61E?list=RDfHR1CZ9x61E"; 
+
+    const displayElement = document.getElementById('text-display');
+    const overlay = document.getElementById('overlay');
+    const music = document.getElementById('bg-music');
+    const container = document.getElementById('credit-container');
+
+    let index = 0;
+
+    overlay.addEventListener('click', async () => {
+        overlay.style.display = 'none';
+        container.style.display = 'block';
+
+        try {
+            music.loop = true;
+            music.volume = 0.8;
+            await music.play();
+        } catch (err) {
+            console.log("Audio blocked:", err);
+        }
+
+        showNextCredit();
+    });
+
+    function showNextCredit() {
+        if (index < credits.length) {
+            displayElement.innerText = credits[index];
+            index++;
+            setTimeout(showNextCredit, 5000);
+        } else {
+            setTimeout(() => {
+                window.location.href = youtubeLink;
+            }, 1000);
+        }
+    }
+    music.volume = 0;
+const fade = setInterval(() => {
+    if (music.volume < 0.8) {
+        music.volume += 0.05;
+    } else {
+        clearInterval(fade);
+    }
+}, 200);
+</script>
+
+</body>
+</html>

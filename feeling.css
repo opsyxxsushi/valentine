@@ -1,0 +1,174 @@
+@font-face {
+    font-family: 'Helve-Reg';
+    src: url('HELVETICA\ LIGHT\ REGULAR.OTF'); /* Use a font like Bodoni or similar to the reference */
+}
+/* 1. The width of the entire scrollbar */
+::-webkit-scrollbar {
+    width: 0px;               /* Thin and minimalist */
+    background: transparent;  /* Makes the track background transparent */
+}
+
+/* 2. The draggable part (the thumb) */
+::-webkit-scrollbar-thumb {
+    background: transparent;      /* Dark grey thumb */
+    border-radius: 10px;      /* Rounded edges */
+    border: 2px solid transparent; /* Creates a "gap" look if track isn't transparent */
+}
+
+/* 3. Hover effect on the thumb */
+::-webkit-scrollbar-thumb:hover {
+    background: #fff;      /* Lights up slightly when hovered */
+}
+
+/* 4. The track (the area behind the thumb) */
+::-webkit-scrollbar-track {
+    background: transparent;  /* Ensures the background stays clear */
+}
+html, body {
+        -webkit-user-select: none; /* Safari */
+    -ms-user-select: none;     /* IE 10 and IE 11 */
+    user-select: none;  
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #fff; /* Matches the light grey background */
+    color: #000;
+    font-family: 'Helve-Reg';
+    text-align: center;
+    animation: fadeInPage 2s ease-in-out;
+}
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+/* Hero Section Styling */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.top-icon {
+    width: 60px;
+    margin-bottom: 20px;
+}
+
+.sub-text {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    margin: 10px 0;
+    text-transform: uppercase;
+    color: #333;
+
+}
+.HONEST {
+    background: #ff3399;
+    color: #fff;
+    padding: 2px 5px;
+}
+.main-title {
+    font-family: 'Helve-Reg';
+    font-size: 125px;
+    margin: 20px 0;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+}
+
+/* Paragraph Content Section */
+.content-section {
+    padding: 100px 20px;
+    background-color: #FFF;
+    min-height: 80vh;
+}
+
+.text-cloud {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.5rem;
+    line-height: 1.4;
+    font-weight: 700;
+    text-align: left;
+    position: relative;
+}
+
+/* Decorative Accents */
+.pink-text { color: #ff3399; }
+
+.circle-text {
+    border: 2px solid #ff3399;
+    border-radius: 50%;
+    padding: 0 10px;
+}
+
+.highlight {
+    background: #ff3399;
+    color: #fff;
+    padding: 2px 5px;
+}
+
+.return-link {
+    display: inline-block;
+    margin-top: 80px;
+    text-decoration: underline;
+    color: #000;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.return-link:hover {
+    color: #ff3399;
+}
+
+@media (max-width: 850px) {
+    .main-title{
+        font-size: 55px;
+    }
+    .text-cloud {
+        font-size: 20px;
+    }
+}
+
+/* --- ADDED ANIMATION & SCROLL LOCK LOGIC --- */
+
+/* Class to lock scroll - applied via JS initially */
+.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}
+
+@keyframes fadeInUpPop {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-text {
+    opacity: 0;
+    animation: fadeInUpPop 1s ease-out forwards;
+}
+
+/* TO BE HONEST delay */
+.title-delay {
+    animation-delay: 0.5s;
+}
+
+/* SCROLL DOWN TO READ delay */
+.scroll-delay {
+    animation-delay: 1.5s;
+}
+
+.idk {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    font-weight: bold;
+}

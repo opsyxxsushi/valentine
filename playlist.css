@@ -1,0 +1,218 @@
+/* --- BASE STYLES --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+/* Original Scrollbar Settings */
+::-webkit-scrollbar { width: 0px; background: transparent; }
+::-webkit-scrollbar-thumb { background: transparent; border-radius: 10px; border: 2px solid transparent; }
+::-webkit-scrollbar-thumb:hover { background: transparent; }
+::-webkit-scrollbar-track { background: transparent; }
+@font-face { font-family: 'Helve-Reg'; src: url('HELVETICA LIGHT REGULAR.OTF'); }
+@font-face { font-family: 'Helve'; src: url('HELVETICA-BOLD.TTF'); }
+@font-face { font-family: 'PESTE'; src: url('PESTETRIAL-REGULAR.OTF'); }
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1f1f1;
+    font-family: 'Inter', sans-serif;
+    color: white;
+    overflow: hidden;
+    animation: fadeInPage 1.5s ease-in-out;  
+}
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+/* --- TEXT ANIMATION LOGIC --- */
+.sequence-wrapper {
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+
+.msg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    font-size: 1.4rem;
+    letter-spacing: 3px;
+    opacity: 0;
+    color: hsl(0, 0%, 100%);
+    font-family: 'Helve-Reg';
+}
+
+/* Timing: 4s per message (12s total) */
+.m1 { animation: textSequence 4s forwards 1s; }
+.m2 { animation: textSequence 4s forwards 5s; }
+.m3 { animation: textSequence 4s forwards 9s; }
+
+@keyframes textSequence {
+    0% { opacity: 0; transform: translate(-50%, 10%); }
+    20%, 80% { opacity: 1; transform: translate(-50%, -50%); }
+    100% { opacity: 0; transform: translate(-50%, -110%); }
+}
+
+/* --- QR STAGE --- */
+.qr-stage {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: finalAppear 1.2s forwards 14s; /* Starts after texts finish */
+}
+
+@keyframes finalAppear {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.final-header {
+    font-size: 1.2rem;
+    letter-spacing: 0px;
+    margin-bottom: 25px;
+    font-family: 'Helve-Reg';
+    color: #fff;
+}
+.qr-box {
+    /* iOS Glassmorphism Effect */
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+    backdrop-filter: blur(20px) saturate(180%); /* Frosted glass effect */
+    -webkit-backdrop-filter: blur(20px) saturate(180%); /* Safari support */
+    
+    /* Border to simulate glass thickness */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    
+    padding: 30px;
+    border-radius: 24px;
+    width: 280px;
+    height: 380px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    
+    /* Shadow for depth against the background */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    
+    /* Keeping your timing */
+    animation: boxGlow 4s infinite ease-in-out 15.5s; 
+}
+
+.qr-code {
+    width: 225px;
+    height: 225px;
+    
+    /* 1. Make the background transparent */
+    background: transparent; 
+    padding: 10px;
+    border-radius: 12px;
+
+    /* 2. Convert standard black/white QR to Neon Green */
+    /* This filter chain: Inverts colors, shifts hue to green, and boosts brightness */
+    
+    /* 3. The Glow Effect */
+    animation: qrPulse 2s infinite ease-in-out 15.5s;
+}
+
+.qr-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    /* Thinner, lighter divider for the glass look */
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 15px;
+    font-family: 'Helve-Reg'; /* Using your fonts */
+}
+
+/* Update the footer tag color to be visible on glass */
+.footer-tag {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.7rem;
+}
+
+.spotify-brand { color: #1DB954; font-weight: bold; font-size: 0.85rem; }
+.footer-tag { color: rgba(255,255,255,0.3); font-size: 0.7rem; }
+/* --- THE WRAPPER THAT CLIPS THE EDGES --- */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: #000;
+    overflow: hidden; /* This acts as a 'mask' to hide the logo/ads */
+    transform:scale(1.2); 
+    filter: blur(2px) brightness(0.4); 
+}
+
+/* --- THE PLAYER SCALED TO HIDE UI --- */
+#player {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* Maintain 16:9 Aspect Ratio */
+    width: 100vw;
+    height: 56.25vw; 
+    min-height: 100vh;
+    min-width: 177.77vh; 
+    
+    /* 1.5 scale pushes the title, logo, and 'related videos' outside the viewable area */
+    transform: translate(-50%, -50%) scale(1.5); 
+    
+    /* Gaussian Blur + Darken */
+    filter: blur(20px) brightness(0.4); 
+    
+    /* Ensures user cannot click the video to see YouTube overlays */
+    pointer-events: none; 
+}
+
+.noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.12;
+    filter: url(#noiseFilter); /* Your existing SVG noise */
+}
+.back-link {
+    display: block;
+    margin-top: 30px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Helve-Reg';
+    font-size: 0.8rem;
+    letter-spacing: -.5px;
+    text-align: center;
+    transition: all 0.3s ease;
+    
+    /* Initially Hidden */
+    opacity: 0;
+    pointer-events: none;
+    
+    /* APPEARANCE TIMING */
+    /* 15.5s (card) + 1.6s (delay) = 17.1s */
+    animation: fadeInLink 1s forwards 1.6;
+}
+
+.back-link:hover {
+    color: #1DB954; /* Spotify Green on hover */
+    text-shadow: 0 0 10px rgba(29, 185, 84, 0.5);
+}
+
+@keyframes fadeInLink {
+    from { 
+        opacity: 0; 
+        transform: translateY(10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0);
+        pointer-events: auto; /* Becomes clickable only when visible */
+    }
+}

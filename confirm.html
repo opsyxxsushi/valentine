@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gasoek+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="confirm.css">
+        <link rel="icon" type="image/png" href="heart_00000.png">
+</head>
+<body class="no-scroll">
+    <div class="gradient-bg"></div>
+    <div class="grain-overlay"></div>
+
+    <h1 class="valentine-logo" id="LOGO">VALENTINE</h1>
+
+<div class="container">
+    <div class="text-wrapper" id="text1">OKAY, THAT WAS A LITTLE TROLL</div>
+    <div class="text-wrapper" id="text2">AND HERE IT COMES</div>
+    <div class="text-wrapper" id="text3">SCROLL FOR MORE SURPRISES</div>
+</div>
+
+
+    <div class="explore-section">
+        <div class="terminal-box">
+            <div class="terminal-header"><span class="terminal-icon">>_</span> Verification</div>
+            <div class="terminal-body">
+                <div class="terminal-row">
+                    <span class="prompt">Name:</span>
+                    <input type="text" id="passwordInput" placeholder="Type name here" autocomplete="off">
+                </div>
+                <div id="terminalMessage" class="terminal-error"></div>
+            </div>
+        </div>
+
+        <div class="bottom-announcement">
+            <div class="marquee-content">
+            <span>❤️  MORE SURPRISES UPCOMING > ❤️</span>
+            <span>❤️  MORE SURPRISES UPCOMING > ❤️</span>
+                        <span>❤️  MORE SURPRISES UPCOMING > ❤️</span>
+            <span>❤️  MORE SURPRISES UPCOMING > ❤️</span>
+                        <span>❤️  MORE SURPRISES UPCOMING > ❤️</span>
+            <span>❤️  MORE SURPRISES UPCOMING > ❤️</span>
+                        <span>❤️  MORE SURPRISES UPCOMING > ❤️</span>
+            <span>❤️  MORE SURPRISES UPCOMING > ❤️</span>
+           <span>❤️  MORE SURPRISES UPCOMING > ❤️</span>
+            <span>❤️  MORE SURPRISES UPCOMING > ❤️</span>
+                        <span>❤️  MORE SURPRISES UPCOMING > ❤️</span>
+            <span>❤️  MORE SURPRISES UPCOMING > ❤️</span>
+                        <span>❤️  MORE SURPRISES UPCOMING > ❤️</span>
+            <span>❤️  MORE SURPRISES UPCOMING > ❤️</span>
+                        <span>❤️  MORE SURPRISES UPCOMING > ❤️</span>
+            <span>❤️  MORE SURPRISES UPCOMING > ❤️</span>
+            </div>
+        </div>
+    </div>
+<script>
+    const passwordInput = document.getElementById('passwordInput');
+    const terminalMessage = document.getElementById('terminalMessage');
+    const text3 = document.getElementById('text3');
+    const logo = document.getElementById('LOGO'); // Select text3 to modify it later
+    let attempts = 0;
+
+    const validNames = ["akari", "akarii", "AKARI", "AKARII", "Akari", "Akarii"];
+    const specialIncorrect = ["Kyr Si", "kyr si", "infix", "Infix", "Infi", "infi"];
+
+    passwordInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            const value = passwordInput.value.trim();
+            
+            if (validNames.includes(value)) {
+                window.location.href = 'about.html';
+                return;
+            }
+
+            if (!isNaN(value) && value !== "") {
+                terminalMessage.innerText = "numbers won't work here...";
+                passwordInput.value = '';
+                return;
+            }
+
+            if (specialIncorrect.includes(value)) {
+                terminalMessage.innerText = "Heyyy not my nameeee";
+            } else {
+                attempts++;
+                if (attempts === 1) {
+                    terminalMessage.innerText = "name is incorrect";
+                } else if (attempts === 2) {
+                    terminalMessage.innerText = "hey try again i'm getting suspicious";
+                } else {
+                    // FAIL STATE: 3 attempts reached
+                    terminalMessage.innerText = "Heyy you're not that girl that I want GTFO";
+                    passwordInput.disabled = true;
+
+                    // 1. Change the text content
+                    text3.innerText = "YOU KNOW WHAT JUST GET THE FUCK OUT";
+                    // 2. Optional: Make it red to look more aggressive
+                    text3.style.color = "#fff";
+                    // 3. Re-run the letter animation
+                    prepareText('text3'); 
+                    logo.innerText = "NAH UH GTFO";
+                    prepareText('LOGO')
+                }
+            }
+            passwordInput.value = ''; 
+        }
+    });
+
+    function prepareText(elementId) {
+        const el = document.getElementById(elementId);
+        const text = el.innerText;
+        el.innerHTML = '';
+        text.split("").forEach((letter, i) => {
+            const span = document.createElement("span");
+            span.textContent = letter === " " ? "\u00A0" : letter;
+            span.style.animationDelay = `${i * 0.05}s`;
+            el.appendChild(span);
+        });
+    }
+
+    window.onload = () => {
+        prepareText('text1'); prepareText('text2'); prepareText('text3');
+        setTimeout(() => { document.getElementById('text1').style.display = 'block'; }, 500);
+        setTimeout(() => { 
+            document.getElementById('text1').classList.add('exit');
+            setTimeout(() => { document.getElementById('text1').style.display = 'none'; }, 500);
+        }, 2500);
+        setTimeout(() => { document.getElementById('text2').style.display = 'block'; }, 3200);
+        setTimeout(() => { 
+            document.getElementById('text2').classList.add('exit');
+            setTimeout(() => { document.getElementById('text2').style.display = 'none'; }, 500);
+        }, 5200);
+        setTimeout(() => { 
+            document.getElementById('text3').style.display = 'block'; 
+            document.body.classList.remove('no-scroll'); 
+        }, 5800);
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SURPRISE #2</title>
+    <link rel="stylesheet" href="feeling.css">
+        <link rel="icon" type="image/png" href="heart_00000.png">
+</head>
+    <audio id="playlist-audio" loop>
+        <source src="MRS MAGIC.mp3" type="audio/mpeg">
+    </audio>
+<body class="no-scroll"> <div class="hero-section">
+        <img src="icon_00000.png" class="top-icon" alt="Feelings Icon">
+
+        <h1 class="main-title animate-text title-delay">TO BE <span class="HONEST">HONEST</span></h1>
+        <p class="idk animate-text scroll-delay">SCROLL DOWN TO READ</p>
+    </div>
+
+<div class="content-section">
+    <div class="text-cloud">
+        <p>
+            Honestly, I like the way you talk, and <span class="highlight">I love how you laugh</span> when we VC. 
+            It’s the kind of laugh that happens without thinking — real, effortless. 
+            I like how you don’t come with bad stories or rumors like <span class="pink-text">other girls.</span> 
+            There are a lot of things I never said out loud, but the truth is I feel calm and genuinely happy when I’m <span class="circle-text">with you.</span> 
+            I don’t talk to anyone the way I talk to you. My friends told me to give up on you, <span class="underline-text">but I never did.</span> 
+            I mean… why would I? 
+            To be honest, I never want to <span class="pink-text">give up</span> on you, even when I know I might not have a chance. 
+            There’s nothing to lose, right? I was never mad when you left me on <span class="highlight">delivered</span> — not even a little. 
+            At the end of the day, you always replied, and that was enough for me. 
+            Sometimes I get jealous of Bryce and Ricky. I wonder how they got you. 
+            But when I really think about it, they’re probably a hundred times better than me. 
+            Still, I like how you’re always friendly, how you somehow end up by my side. 
+            And honestly… just tell me what you want. <strong>I’ll be that for you.</strong>
+        </p>
+    </div>
+
+        <a href="about.html" class="return-link">← RETURN TO THE START OF THE ADVENTURE</a>
+    </div>
+<script>
+        // Wait for the animation to finish (roughly 2.5 seconds based on CSS delays)
+        // then enable scrolling.
+        setTimeout(() => {
+            document.body.classList.remove('no-scroll');
+        }, 2500); 
+    const audio = document.getElementById('playlist-audio');
+    let musicStarted = false;
+
+    // Function to start the audio and fade it in
+    function startPlaylistMusic() {
+        if (!musicStarted) {
+            musicStarted = true;
+            audio.volume = 0;
+            
+            audio.play().then(() => {
+                let vol = 0;
+                const fadeIn = setInterval(() => {
+                    if (vol < 1) {
+                        vol += 0.05;
+                        audio.volume = Math.min(vol, 1);
+                    } else { 
+                        clearInterval(fadeIn); 
+                    }
+                }, 200);
+            }).catch(err => {
+                // If it still fails, we reset so the next click tries again
+                musicStarted = false;
+                console.log("Waiting for interaction...");
+            });
+        }
+    }
+
+    // This triggers as soon as she moves her mouse, clicks, or touches her screen
+    window.addEventListener('mousemove', startPlaylistMusic, { once: true });
+    window.addEventListener('click', startPlaylistMusic, { once: true });
+    window.addEventListener('touchstart', startPlaylistMusic, { once: true });
+    window.addEventListener('scroll', startPlaylistMusic, { once: true });
+    </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" type="image/png" href="heart_00000.png">
+
+</head>
+<body onmousemove="startMusic()" onclick="startMusic()" ontouchstart="startMusic()">
+
+    <audio id="bgMusic" loop>
+        <source src=".mp3" type="audio/mpeg">
+    </audio>
+
+    <form id="no-form" action="https://formspree.io/f/mjgwqgen" method="POST" style="display:none;">
+        <input type="text" name="message" value="The user confirmed NO and was redirected to YouTube.">
+    </form>
+
+    <div class="container">
+        <div id="gif-container" class="gif-wrapper">
+            <img id="main-gif" src="minions-heart.gif" alt="Minions Heart" style="width: 100%; border-radius: 10px;">
+        </div>
+
+        <h1 id="title">Will you be my Valentine?</h1>
+
+        <div class="btn-group">
+            <button id="yesBtn">Yes</button>
+            <button id="noBtn">No</button>
+        </div>
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const titleText = document.getElementById('title');
+        const mainGif = document.getElementById('main-gif');
+        const noForm = document.getElementById('no-form');
+        const bgMusic = document.getElementById('bgMusic');
+        
+        let hoverCount = 0;
+        let isSecondPhase = false;
+        let musicStarted = false;
+
+        // This function plays the music once and then "self-destructs" so it doesn't restart
+        function startMusic() {
+            if (!musicStarted) {
+                bgMusic.play().then(() => {
+                    musicStarted = true;
+                }).catch(err => {
+                    // Still blocked by browser, will try again on next move/click
+                });
+            }
+        }
+
+        function setYesToNormal() {
+            yesBtn.onclick = () => { window.location.href = 'confirm.html'; };
+        }
+        setYesToNormal();
+
+        noBtn.addEventListener('mouseover', () => {
+            if (hoverCount < 10 && !isSecondPhase) {
+                const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+                const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+                noBtn.style.position = 'absolute';
+                noBtn.style.left = x + 'px';
+                noBtn.style.top = y + 'px';
+                hoverCount++;
+            } else if (hoverCount >= 10 && !isSecondPhase) {
+                noBtn.style.position = 'static';
+                titleText.innerText = "Well, here's your no button";
+                mainGif.src = "sad-minion.gif";
+            }
+        });
+
+        noBtn.addEventListener('click', async () => {
+            if (hoverCount >= 10) {
+                if (!isSecondPhase) {
+                    isSecondPhase = true;
+                    titleText.innerText = "Are you sure?";
+                    
+                    yesBtn.onclick = async () => {
+                        const formData = new FormData(noForm);
+                        try {
+                            await fetch(noForm.action, {
+                                method: 'POST',
+                                body: formData,
+                                headers: { 'Accept': 'application/json' }
+                            });
+                        } catch (e) { console.log("Formspree failed"); }
+                        window.location.href = "https://youtu.be/EFEh0npHExw?list=RDEFEh0npHExw";
+                    };
+                } else {
+                    isSecondPhase = false;
+                    hoverCount = 0;
+                    titleText.innerText = "Will you be my Valentine?";
+                    mainGif.src = "minions-heart.gif";
+                    setYesToNormal();
+                    noBtn.style.position = 'static';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABOUT YOU</title>
+    <link rel="stylesheet" href="about.css">
+        <link rel="icon" type="image/png" href="heart_00000.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body onmousemove="startMusic()" onclick="startMusic()" ontouchstart="startMusic()">
+    <audio id="bgMusic" loop>
+        <source src="peach eyes_spotdown.org.mp3" type="audio/mpeg">
+    </audio>
+<section class="masterpiece-container">
+        <h1 class="main-title">EVERYTHING I NOTED ABOUT YOU</h1>
+        <div class="card-track">
+            <div class="square-card s1"><img src="two.jpg"></div>
+            <div class="square-card s2"><img src="https://i.scdn.co/image/ab67616d0000b273a4ffb2049ffce92bdae5f559"></div>
+            <div class="square-card s3"><img src="https://i.scdn.co/image/ab67616d0000b2734f0fd9dad63977146e685700"></div>
+            <div class="square-card s4"><img src="one.jpg"></div>
+            <div class="square-card s5"><img src="https://i.scdn.co/image/ab67616d0000b27305ac3e026324594a31fad7fb"></div>
+            <div class="square-card s6"><img src="three.jpg"></div>
+            <div class="square-card s7"><img src="https://www.dutchvinyl.com.au/cdn/shop/files/94651cd5c47512881b3e172c4b34bdc7_700x700.jpg?v=1754548564"></div>
+        </div>
+    </section>
+
+    <div class="divider-row">
+        <span>OPEN</span>
+        <span class="arrow">⟶</span>
+        <span>THE</span>
+        <span class="arrow">⟶</span>
+        <span class="oval-text">MYSTERY</span>
+        <span class="arrow">⟶</span>
+        <span>CARDS</span>
+        <span class="arrow">⟶</span>
+        <span>NOW</span>
+    </div>
+<section class="product-section">
+    <div class="product-grid">
+        <div class="product-card mystery-card card-1" onclick="markAsOpened('card-1')">
+            <div class="img-container">
+                <img src="https://i.pinimg.com/736x/05/60/fe/0560fe9a4bed23f06e79f764f97266fc.jpg">
+                <div class="done-overlay">SPOTIFY PLAYLIST</div>
+            </div>
+            <div class="price-pill"><span>↓ SURPRISE</span></div>
+            <a href="playlist.html" class="btn-link">
+                <div class="quantity-pill"><span>OPEN?</span></div>
+            </a>
+        </div>
+
+        <div class="product-card mystery-card card-2" onclick="markAsOpened('card-2')">
+            <div class="img-container">
+                <img src="https://i.pinimg.com/736x/05/60/fe/0560fe9a4bed23f06e79f764f97266fc.jpg">
+                <div class="done-overlay">HONESTLY</div>
+            </div>
+            <div class="price-pill"><span>↓ SURPRISE</span></div>
+            <a href="feeling.html" class="btn-link">
+                <div class="quantity-pill"><span>OPEN?</span></div>
+            </a>
+        </div>
+
+        <div class="product-card mystery-card card-3" onclick="markAsOpened('card-3')">
+            <div class="img-container">
+                <img src="https://i.pinimg.com/736x/05/60/fe/0560fe9a4bed23f06e79f764f97266fc.jpg">
+                <div class="done-overlay">ABOUT YOU</div>
+            </div>
+            <div class="price-pill"><span>↓ SURPRISE</span></div>
+            <a href="favorite.html" class="btn-link">
+                <div class="quantity-pill"><span>OPEN?</span></div>
+            </a>
+        </div>
+
+        <div class="product-card mystery-card card-4" onclick="markAsOpened('card-4')">
+            <div class="img-container">
+                <img src="https://i.pinimg.com/736x/05/60/fe/0560fe9a4bed23f06e79f764f97266fc.jpg">
+                <div class="done-overlay">DRAFTS</div>
+            </div>
+            <div class="price-pill"><span>↓ SURPRISE</span></div>
+            <a href="draft.html" class="btn-link">
+                <div class="quantity-pill"><span>OPEN?</span></div>
+            </a>
+        </div>
+    </div>
+</section>
+    <div class="divider-row">
+        <span>PICK</span>
+        <span class="arrow">⟶</span>
+        <span>YOUR</span>
+        <span class="arrow">⟶</span>
+        <span class="oval-text">FAVORITE</span>
+        <span class="arrow">⟶</span>
+        <span>VALENTINE</span>
+        <span class="arrow">⟶</span>
+        <span>GIFTS</span>
+    </div>
+<section class="valentine-spinner-section">
+    <h2 class="spinner-title">PICK ONE GIFT FOR VALENTINE <br> DON'T FORGET TO SCREENSHOT WHAT YOU GET</h2>
+    
+    <div class="crate-viewport">
+        <div class="crate-marker"></div> <div class="crate-reel" id="crateReel">
+            <div class="gift-item"><img src="https://i.ebayimg.com/images/g/SEMAAOSwlFNng94c/s-l1200.jpg"></div>
+            <div class="gift-item"><img src="https://i.pinimg.com/1200x/04/40/9c/04409c89b6ab685bd345a7385022e549.jpg"></div>
+            <div class="gift-item"><img src="https://i.pinimg.com/1200x/37/d8/1c/37d81c8cd74b90c6e732745e2dab9beb.jpg"></div>
+            <div class="gift-item"><img src="https://i.pinimg.com/736x/e7/e2/b6/e7e2b63e9066f63dd29825be9142e49a.jpg"></div>
+            <div class="gift-item"><img src="https://i.pinimg.com/1200x/13/ee/c4/13eec499a383d25f4b126c232d42b749.jpg"></div>
+            <div class="gift-item"><img src="https://i.pinimg.com/1200x/37/d8/1c/37d81c8cd74b90c6e732745e2dab9beb.jpg"></div>
+            <div class="gift-item"><img src="https://i.pinimg.com/1200x/b0/09/84/b00984d3a0873705d24c3ef3791dc454.jpg"></div>
+            <div class="gift-item"><img src="https://i.pinimg.com/1200x/87/ff/89/87ff8998490c8a908fb51089882d9874.jpg"></div>
+            <div class="gift-item"><img src="https://i.pinimg.com/1200x/37/d8/1c/37d81c8cd74b90c6e732745e2dab9beb.jpg"></div>
+            <div class="gift-item"><img src="https://i.pinimg.com/736x/bf/1a/e5/bf1ae53de7fa5512862754f6955a022f.jpg"></div>
+            </div>
+    </div>
+
+    <div class="spinner-controls">
+        <button id="spinBtn" onclick="spinCrate()">SPIN THE REEL</button>
+        <p class="tries-text">Tries left: <span id="triesLeft">2</span></p>
+    </div>
+</section>
+<section class="feedback-section">
+    <div class="feedback-container">
+        <h2>Send feedback to Infix about how you feel about this website and him confessing his feelings for you</h2>
+        
+        <form id="feedbackForm" action="https://formspree.io/f/xwvblqyw" method="POST">
+            <div class="input-wrapper">
+                <textarea 
+                    name="message" 
+                    id="messageInput" 
+                    placeholder="Type your message here..." 
+                    required></textarea>
+                <button type="submit" id="sendBtn">SEND</button>
+            </div>
+        </form>
+        
+        <p id="formStatus"></p>
+    </div>
+</section>
+
+<section class="final-question-section">
+    <div id="questionContainer" class="question-wrapper">
+        <h1 class="real-talk-h1">Last one real talk: will you be my valentine, Akari?</h1>
+        <div class="choice-buttons">
+            <button type="button" class="choice-btn yes-btn" onclick="submitChoice('yes')">YES</button>
+            <button type="button" class="choice-btn talk-btn" onclick="submitChoice('talk')">Let's talk about it</button>
+        </div>
+    </div>
+
+    <div id="resultContainer" class="result-vertical-stack" style="display:none;">
+        <div id="yesMessage" style="display:none;">
+            <h1>YESSSSSSSSS THANK YOU SM AKARI ❤️</h1>
+        </div>
+        <div id="talkMessage" style="display:none;">
+            <h1>Oh okay.</h1>
+        </div>
+        
+        <div id="nextStepContainer" class="next-step-container">
+            <a href="gend.html" class="next-link">Wait, one last thing... ⟶</a>
+        </div>
+    </div>
+</section>
+<script>
+    const bgMusic = document.getElementById('bgMusic');
+    let musicStarted = false;
+
+    function startMusic() {
+        if (!musicStarted) {
+            bgMusic.volume = 0; // Start at silence
+            bgMusic.play().then(() => {
+                musicStarted = true;
+                fadeInAudio(bgMusic);
+            }).catch(err => {
+                // Browser still blocking; waits for the next click
+                console.log("Autoplay blocked. Waiting for user interaction.");
+            });
+        }
+    }
+
+    function fadeInAudio(audioElement) {
+        let volume = 0;
+        const fadeSpeed = 0.05; // Adjust how fast it fades in
+        const fadeInterval = setInterval(() => {
+            if (volume < 1) {
+                volume += fadeSpeed;
+                // Ensure we don't exceed 1.0 (max volume)
+                audioElement.volume = Math.min(volume, 1);
+            } else {
+                clearInterval(fadeInterval);
+            }
+        }, 150); // Speed of volume increments in milliseconds
+    }
+// Function to mark card as opened
+function markAsOpened(cardId) {
+    // We use sessionStorage so it lasts only as long as the tab is open
+    sessionStorage.setItem(cardId, 'true');
+}
+
+// Function to handle the refresh logic
+function handleRefreshLogic() {
+    // Check if the page was reloaded/refreshed
+    if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
+        // If refreshed, clear all saved "Opened" states
+        sessionStorage.clear();
+        console.log("Page refreshed: Clearing opened states.");
+    }
+
+    const cards = ['card-1', 'card-2', 'card-3', 'card-4'];
+    cards.forEach(cardId => {
+        if (sessionStorage.getItem(cardId) === 'true') {
+            const cardElement = document.querySelector(`.${cardId}`);
+            if (cardElement) {
+                cardElement.classList.add('is-opened');
+            }
+        }
+    });
+}
+
+// Update your window.onload
+window.onload = function() {
+    handleRefreshLogic();
+    // Keep your music logic here too
+    if (typeof startMusic === 'function') {
+        // any music initialization
+    }
+};
+let tries = 2;
+const crateReel = document.getElementById('crateReel');
+const spinBtn = document.getElementById('spinBtn');
+const triesDisplay = document.getElementById('triesLeft');
+
+// Fill the reel with many items to make it look infinite
+function setupReel() {
+    const items = crateReel.innerHTML;
+    for(let i=0; i<10; i++) {
+        crateReel.innerHTML += items;
+    }
+}
+setupReel();
+
+function spinCrate() {
+    if (tries <= 0) return;
+
+    tries--;
+    triesDisplay.innerText = tries;
+    spinBtn.disabled = true;
+
+    // CSGO Logic: Move to a random item far down the line
+    // Each item is 160px. We spin at least 50 items deep.
+    const itemWidth = 160;
+    const randomItemIndex = Math.floor(Math.random() * 20) + 40; 
+    const stopPosition = (randomItemIndex * itemWidth) - (400 - (itemWidth / 2));
+
+    crateReel.style.transform = `translateX(-${stopPosition}px)`;
+
+    // Wait for animation to finish (5 seconds)
+    setTimeout(() => {
+        if (tries > 0) {
+            spinBtn.disabled = false;
+        } else {
+            spinBtn.innerText = "NO TRIES LEFT";
+        }
+    }, 5000);
+}
+const feedbackForm = document.getElementById("feedbackForm");
+const messageInput = document.getElementById("messageInput");
+const formStatus = document.getElementById("formStatus");
+
+// 1. Allow "Enter" key to submit (without needing a Shift+Enter for new line)
+messageInput.addEventListener("keydown", function(event) {
+    if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault(); // Prevents a new line
+        feedbackForm.dispatchEvent(new Event("submit")); // Triggers form submission
+    }
+});
+
+// 2. Handle the Form Submission via AJAX (Formspree)
+feedbackForm.addEventListener("submit", function(event) {
+    event.preventDefault(); // This prevents the redirect to Formspree's site
+    
+    const data = new FormData(event.target);
+    
+    fetch(event.target.action, {
+        method: feedbackForm.method,
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+    }).then(response => {
+        if (response.ok) {
+            formStatus.innerText = "Message sent!";
+            feedbackForm.reset(); // Clears the input
+            // Hide message after 5 seconds
+            setTimeout(() => { formStatus.innerText = ""; }, 5000);
+        } else {
+            formStatus.style.color = "red";
+            formStatus.innerText = "Oops! There was a problem sending your message.";
+        }
+    }).catch(error => {
+        formStatus.style.color = "red";
+        formStatus.innerText = "Oops! Network error.";
+    });
+});
+function submitChoice(decision) {
+    const questionContainer = document.getElementById('questionContainer');
+    const resultContainer = document.getElementById('resultContainer');
+    const yesMessage = document.getElementById('yesMessage');
+    const talkMessage = document.getElementById('talkMessage');
+    const nextStep = document.getElementById('nextStepContainer');
+
+    // 1. Hide Question
+    questionContainer.style.display = 'none';
+
+    // 2. Show Result Container and the specific message
+    resultContainer.style.display = 'flex';
+    if (decision === 'yes') {
+        yesMessage.style.display = 'block';
+    } else {
+        talkMessage.style.display = 'block';
+    }
+
+    // 3. Trigger the "Wait, one last thing..." fade-in from bottom
+    setTimeout(() => {
+        nextStep.classList.add('reveal');
+    }, 400); // Slight delay for better visual flow
+}
+// 1. Updated handleRefreshLogic to check if all cards are done
+function handleRefreshLogic() {
+    if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
+        sessionStorage.clear();
+    }
+
+    const cards = ['card-1', 'card-2', 'card-3', 'card-4'];
+    let openedCount = 0;
+
+    cards.forEach(cardId => {
+        if (sessionStorage.getItem(cardId) === 'true') {
+            openedCount++;
+            const cardElement = document.querySelector(`.${cardId}`);
+            if (cardElement) cardElement.classList.add('is-opened');
+        }
+    });
+
+    // IF ALL 4 CARDS ARE OPENED -> SHOW SECTION 3 (SPINNER)
+    if (openedCount === 4) {
+        document.querySelector('.valentine-spinner-section').classList.add('section-visible');
+    }
+}
+
+// 2. Updated spinCrate to show final sections when tries run out
+function spinCrate() {
+    if (tries <= 0) return;
+
+    tries--;
+    triesDisplay.innerText = tries;
+    spinBtn.disabled = true;
+
+    const itemWidth = 160;
+    const randomItemIndex = Math.floor(Math.random() * 20) + 40; 
+    const stopPosition = (randomItemIndex * itemWidth) - (400 - (itemWidth / 2));
+
+    crateReel.style.transform = `translateX(-${stopPosition}px)`;
+
+    setTimeout(() => {
+        if (tries > 0) {
+            spinBtn.disabled = false;
+        } else {
+            spinBtn.innerText = "NO TRIES LEFT";
+            
+            // SHOW LAST TWO SECTIONS (FEEDBACK & PROPOSAL)
+            document.querySelector('.feedback-section').classList.add('section-visible');
+            document.querySelector('.final-question-section').classList.add('section-visible');
+            
+            // Smooth scroll to the feedback section automatically
+            document.querySelector('.feedback-section').scrollIntoView({ behavior: 'smooth' });
+        }
+    }, 5000);
+}
+
+// Ensure the check runs on page load
+window.onload = function() {
+    handleRefreshLogic();
+};
+</script>
+</body>
+</html>

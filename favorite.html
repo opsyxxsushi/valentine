@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SURPRISE #3</title>
+    <link rel="stylesheet" href="favorite.css">
+        <link rel="icon" type="image/png" href="heart_00000.png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Clicker+Script&display=swap" rel="stylesheet">
+</head>
+<body>
+        <audio id="playlist-audio" loop>
+        <source src="WANTCHU.mp3" type="audio/mpeg">
+    </audio>
+<div class="header">
+    <img src="flower_00000.png" class="background-flower" alt="flower doodle">
+    <h1>
+        <span class="fade-up line-1"><i>THINGS ABOUT</i></span> 
+        <br> 
+        <span class="fade-up things"><i>YOU</i></span>
+    </h1>
+</div>
+<div class="content-wrapper">
+    <section class="folder-row row-left">
+        <div class="media-group">
+            <img src="folder.png" alt="folder" class="folder-img">
+            <h2 class="example-title">being chalant</h2>
+        </div>
+        <div class="description-box">
+            <p>At first I thought you were scary, I couldn’t even text you. But once we got less awkward, I realized you’re actually really chalant, friendly, and I fw that. BUT BUT WAIT I'M STILL SCARE OF YOU NW .. just in case you decide to beat the shit out of me.</p>
+        </div>
+    </section>
+
+    <section class="folder-row row-right">
+        <div class="media-group">
+            <img src="folder.png" alt="folder" class="folder-img">
+            <h2 class="example-title">alc*hol</h2>
+        </div>
+        <div class="description-box">
+            <p>UMM… ALCOHOLIC BEHAVIOUR, I guess. Just kidding. You’re not really an alcoholic — I’m way worse and you know that. I still laugh thinking about how two bottles were enough to get you drunk. The funniest part is the silly texts you send when you’re drunk…</p>
+        </div>
+    </section>
+
+    <section class="folder-row row-left">
+        <div class="media-group">
+            <img src="folder.png" alt="folder" class="folder-img">
+            <h2 class="example-title">places</h2>
+        </div>
+        <div class="description-box">
+            <p>I don’t really know what your favorite place is, but I feel like it might be New York. You seem like the type who wants to study abroad and travel — anywhere, really. I’m the same way, always wanting to go somewhere new. But be honest… don’t you want to go to haunted places too?</p>
+        </div>
+    </section>
+
+    <section class="folder-row row-right">
+        <div class="media-group">
+            <img src="folder.png" alt="folder" class="folder-img">
+            <h2 class="example-title">fugglers</h2>
+        </div>
+        <div class="description-box">
+            <p>I still don’t get why you like Fuggler dolls, but somehow it makes sense. They’re weird, funny, and kind  in their own way… which reminds me of you. Not gonna lie PEANUTS looks exactly like you.</p>
+        </div>
+    </section>
+
+    <section class="folder-row row-left">
+        <div class="media-group">
+            <img src="folder.png" alt="folder" class="folder-img">
+            <h2 class="example-title">studying</h2>
+        </div>
+        <div class="description-box">
+            <p>You’re always locked in when it comes to studying, especially during group projects. I lowkey admire how focused you get… even when everyone else is just there to chill</p>
+        </div>
+    </section>
+    <div class="footer-nav">
+        <a href="about.html" class="return-link">DONE READING? ← GO BACK TO THE ADVENTURE</a>
+    </div>
+</div>
+<script>
+    const audio = document.getElementById('playlist-audio');
+    let musicStarted = false;
+
+    // Function to start the audio and fade it in
+    function startPlaylistMusic() {
+        if (!musicStarted) {
+            musicStarted = true;
+            audio.volume = 0;
+            
+            audio.play().then(() => {
+                let vol = 0;
+                const fadeIn = setInterval(() => {
+                    if (vol < 1) {
+                        vol += 0.05;
+                        audio.volume = Math.min(vol, 1);
+                    } else { 
+                        clearInterval(fadeIn); 
+                    }
+                }, 200);
+            }).catch(err => {
+                // If it still fails, we reset so the next click tries again
+                musicStarted = false;
+                console.log("Waiting for interaction...");
+            });
+        }
+    }
+
+    // This triggers as soon as she moves her mouse, clicks, or touches her screen
+    window.addEventListener('mousemove', startPlaylistMusic, { once: true });
+    window.addEventListener('click', startPlaylistMusic, { once: true });
+    window.addEventListener('touchstart', startPlaylistMusic, { once: true });
+    window.addEventListener('scroll', startPlaylistMusic, { once: true });
+</script>
+</body>
+</html>

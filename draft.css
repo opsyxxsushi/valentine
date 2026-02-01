@@ -1,0 +1,246 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Helve-Reg';
+    src: url('HELVETICA LIGHT REGULAR.OTF');
+}
+@font-face {
+    font-family: 'BRI';
+    src: url('BRICOLAGEGROTESQUE10PT-REGULAR-BF648BD57857EB7.OTF');
+}
+
+/* Hide Scrollbar */
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+html, body {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow-x: hidden;
+    background-color: #fff;
+}
+
+body {
+  font-family: 'Helve-Reg', Arial, sans-serif;
+  color: #000;
+  animation: fadeInPage 2s ease-in-out;
+}
+
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* HERO SECTION */
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 105%;
+  height: 105%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  filter: blur(2px) brightness(1); 
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content h1 {
+  color: #fff;
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  letter-spacing: -1px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.send {
+    background: #ff3399;
+    color: #fff;
+    padding: 2px 15px;
+}
+
+/* SECOND SECTION - Fixed Dimensions & Centered Image */
+.second-section {
+    width: 1920px;
+    height: 800px;
+    margin: 0 auto; /* Centers the 1920px block if screen is wider */
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.center-img {
+    max-width: 600px; /* Adjust based on your image size */
+    height: auto;
+    display: block;
+}
+
+/* --- SECTION 3: INTERACTIVE FOLDER --- */
+.third-section {
+    min-height: 100vh;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 20px;
+}
+
+.folder-wrapper {
+    width: 100%;
+    max-width: 800px;
+    position: relative;
+}
+
+/* Hide Radio Buttons */
+input[name="folder-tabs"] {
+    display: none;
+}
+
+/* Tab Labels Styling */
+.folder-tabs {
+    display: flex;
+    margin-left: 20px;
+}
+
+.tab-label {
+    background: #e0e0e0;
+    padding: 10px 30px;
+    font-family: 'BRI', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 12px 12px 0 0;
+    margin-right: 5px;
+    transition: background 0.3s, transform 0.2s;
+    color: #666;
+}
+
+.tab-label:hover {
+    background: #d0d0d0;
+}
+
+/* Folder Body (The "Paper") */
+.folder-body {
+    background: #f1f1f1;
+    min-height: 500px;
+    padding: 60px;
+    border-radius: 0 20px 20px 20px;
+    box-shadow: 20px 20px 60px rgba(0,0,0,0.05);
+    position: relative;
+    border: 1px solid #e0e0e0;
+}
+
+/* Pages Styling */
+.page {
+    display: none; /* Hide all pages by default */
+    animation: fadeIn 0.5s ease-out;
+}
+
+.page-title {
+    font-family: 'BRI';
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-style: italic ;
+    letter-spacing: -1px;
+    text-align: center;
+}
+.footer-nav {
+    width: 100%;
+    padding: 100px 0; /* Creates space after the last folder */
+    display: flex;
+    justify-content: center;
+    background-color: #ffff; /* Matches the background of Section 5 for a seamless look */
+}
+
+.return-link {
+    font-family: 'BRI';
+    font-size: 14px;
+    text-decoration: none;
+    color: #000;
+    padding-bottom: 5px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.return-link:hover {
+    color: #ff3399; /* Turns pink on hover like your other links */
+    opacity: 0.7;
+}
+/* Show content based on which radio is checked */
+#tab1:checked ~ .folder-tabs label[for="tab1"],
+#tab2:checked ~ .folder-tabs label[for="tab2"] {
+    background: #f1f1f1;
+    color: #000;
+    transform: translateY(1px); /* Connects visually to the body */
+    z-index: 2;
+}
+
+#tab1:checked ~ .folder-body .content-intro {
+    display: block;
+}
+
+#tab2:checked ~ .folder-body .content-drafts {
+    display: block;
+}
+
+/* Draft List Styling */
+.draft-list {
+    text-align: left;
+}
+
+.draft-item {
+    font-family: 'Helve-Reg', sans-serif;
+    font-style: italic;
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.folder-decoration {
+    display: block;
+    margin-top: 50px;
+    font-size: 20px;
+    color: #ff3399;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Fix */
+@media (max-width: 600px) {
+    .folder-body { padding: 30px; }
+    .page-title { font-size: 1.8rem; }
+}
+/* Responsive Fix for the 1920px section */
+@media (max-width: 1920px) {
+    .second-section {
+        width: 100%; /* Keeps it from breaking on smaller screens */
+    }
+}
