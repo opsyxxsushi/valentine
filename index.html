@@ -9,7 +9,64 @@
 
 </head>
 <body onmousemove="startMusic()" onclick="startMusic()" ontouchstart="startMusic()">
+<div id="lock-screen" style="position:fixed; top:0; left:0; width:100%; height:100%; background:black; color:white; z-index:9999; display:none; flex-direction:column; align-items:center; justify-content:center; font-family: 'Helvetica', Arial, sans-serif;">
+    
+    <p style="letter-spacing: -.4px; font-size: 100px; font-weight: 400;">TEMPORARY LOCKED</p>
+    
+    <p style="cursor:pointer; color:#fff; font-size: 1rem; margin-top: 20px; transition: 0.3s;" 
+       onmouseover="this.style.color='#fff'" 
+       onmouseout="this.style.color='#333'" 
+       onclick="showInput()">Admin Override?</p>
+    
+    <div id="input-container" style="position:fixed; bottom:-100px; transition:0.5s ease-in-out; background:#111; padding:30px; width:100%; display:flex; justify-content:center; gap:15px; border-top: 1px solid #222;">
+        <input type="text" id="keyInput" placeholder="ENTER ACCESS KEY" style="background:transparent; border: 1px solid #444; color:white; padding:10px; outline:none; font-family:sans-serif; width: 200px;">
+        <button onclick="checkKey()" style="background:white; color:black; border:none; padding:10px 25px; cursor:pointer; font-weight:bold; font-size: 0.8rem;">UNLOCK</button>
+    </div>
+</div>
 
+<script>
+    const validKeys = ["A9F7K2QX", "M4Z8T6LP", "QX3N7A9E", "7KPF2M8R", "L9A6XQ4T", "R2M7ZK8A", "XQ5T9F3N", "8A6RZPQM", "T4KX7N9A", "ZP2F8Q6M"];
+    const lockScreen = document.getElementById('lock-screen');
+    const mainContent = document.getElementById('main-content');
+
+    // 1. CHECK IF ALREADY UNLOCKED ON LOAD
+    window.onload = function() {
+        if (sessionStorage.getItem('siteUnlocked') === 'true') {
+            lockScreen.style.display = 'none';
+            mainContent.style.display = 'block';
+        } else {
+            lockScreen.style.display = 'flex';
+        }
+    };
+
+    function showInput() {
+        document.getElementById('input-container').style.bottom = "0";
+    }
+
+    function checkKey() {
+        const input = document.getElementById('keyInput').value.trim().toUpperCase();
+        
+        if (validKeys.includes(input)) {
+            // Check if this specific key was used globally (simulated via localStorage)
+            if (localStorage.getItem('void_' + input)) {
+                alert("ACCESS DENIED: KEY PREVIOUSLY VOIDED");
+            } else {
+                // VOID THE KEY and UNLOCK SITE
+                localStorage.setItem('void_' + input, 'true');
+                sessionStorage.setItem('siteUnlocked', 'true'); // Keeps them logged in for this session
+                
+                lockScreen.style.display = 'none';
+                mainContent.style.display = 'block';
+            }
+        } else {
+            alert("INVALID ACCESS KEY");
+        }
+    }
+</script>
+
+<div id="main-content" style="display:none;">
+    
+    </div>
     <audio id="bgMusic" loop>
         <source src=".mp3" type="audio/mpeg">
     </audio>
